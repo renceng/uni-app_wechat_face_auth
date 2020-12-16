@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "人脸核身",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "vertify-mpsdk": "/wxcomponents/verify_mpsdk/index/index"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="content"><button type="primary" data-event-opts="{{[['tap',[['gotoVerify',['$event']]]]]}}" bindtap="__e">进入人脸核身</button></view>

@@ -1,0 +1,42 @@
+
+<!--verify_mpsdk/index/index.wxml-->
+<import src="../templates/index/index.wxml"></import>
+<import src="../templates/sms/sms.wxml"></import>
+<import src="../templates/ocr/ocr.wxml"></import>
+<import src="../templates/livingbody/livingbody.wxml"></import>
+<import src="../templates/failpage/failpage.wxml"></import>
+<import src="../templates/success/success.wxml"></import>
+<import src="../templates/notice/notice.wxml"></import>
+<import src="../templates/errorToast/errorToast.wxml"></import>
+<import src="../templates/showAuthToast/showAuthToast.wxml"></import>
+<import src="..//templates/navTip/navTip.wxml"></import>
+
+<view id="fix-full-page">
+  <!-- index -->
+  <template is="verifyIndex" wx:if="{{curPage === 1}}" data="{{...cmsConfig,index_rule,show_about_dlg,indexChecked,indexDisableBtn}}"></template>
+  <!-- notice page -->
+  <template is="verifyNotice" wx:if="{{curPage === 7}}" data="{{...cmsConfig,notice}}"></template>
+
+  <view wx:if="{{curPage !== 1 && curPage !== 7}}">
+    <template is="navTip" data="{{...cmsConfig,...cmsConfig.skipConfig,curPage}}" wx:if="{{isNotCamera}}"></template>
+    <!-- sms -->
+    <template is="verifySms" wx:if="{{curPage === 2}}" data="{{...cmsConfig,sms}}"></template>
+
+    <!-- ocr -->
+    <template is="verifyOcr" wx:if="{{curPage === 3}}" data="{{...cmsConfig,ocr,isInfinityDisplay}}"></template>
+
+    <!-- living body -->
+    <template is="verifyLivingBody" wx:if="{{curPage === 4}}" data="{{...cmsConfig,livingbody,isInfinityDisplay}}"></template>
+
+    <!-- fail page -->
+    <template is="verifyFailPage" wx:if="{{curPage === 5}}" data="{{...cmsConfig,failInfo}}"></template>
+
+    <!-- success page -->
+    <template is="verifySuccessPage" wx:if="{{curPage === 6}}" data="{{...cmsConfig}}"></template>
+
+  </view>
+</view>
+
+<template is="error_template" wx:if="{{showErrorMsg}}" data="{{...cmsConfig,...err}}"></template>
+
+<template is="auth_template"  data="{{...cmsConfig,authInfo}}" wx:if="{{show_auth_panel}}"></template>
